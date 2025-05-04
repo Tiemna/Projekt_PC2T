@@ -55,7 +55,6 @@ public class Telekomunikace extends Student {
 		super(iD, jmeno, prijmeni, datumNarozeni);
 	}
 
-	@Override
 	public String dovednost() {
 		String morJmenoAPrijmeni="";
 		for (char i : this.getJmeno().toCharArray()) {

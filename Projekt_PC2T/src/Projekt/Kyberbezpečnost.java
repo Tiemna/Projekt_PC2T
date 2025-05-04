@@ -10,7 +10,6 @@ public class Kyberbezpečnost extends Student {
 		super(iD, jmeno, prijmeni, datumNarozeni);
 	}
 
-	@Override
 	public String dovednost() {
 		String jmenoAPrijmeni=this.getJmeno()+this.getPrijmeni();
 		MessageDigest md;

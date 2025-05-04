@@ -1,0 +1,6 @@
+class Projekt.Telekomunikace
+4
+Eva
+Svobodova
+1.2.2002
+[5]

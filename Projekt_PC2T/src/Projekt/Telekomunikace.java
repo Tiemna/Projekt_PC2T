@@ -59,11 +59,10 @@ public class Telekomunikace extends Student {
 	public String dovednost() {
 		String morJmenoAPrijmeni="";
 		for (char i : this.getJmeno().toCharArray()) {
-			morJmenoAPrijmeni+=morseovka.get(Character.toUpperCase(i));
+			morJmenoAPrijmeni+=morseovka.get(Character.toUpperCase(i))+"/";
 		}
-		morJmenoAPrijmeni+="/";
 		for (char i : this.getPrijmeni().toCharArray()) {
-			morJmenoAPrijmeni+=morseovka.get(Character.toUpperCase(i));
+			morJmenoAPrijmeni+=morseovka.get(Character.toUpperCase(i))+"/";
 		}
 		return morJmenoAPrijmeni;
 	}

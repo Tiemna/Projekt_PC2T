@@ -34,6 +34,10 @@ public abstract class Student {
 	
 	public abstract String dovednost();
 	
+	public void pridejZnamku(int z) {
+		znamky.add(z);
+	}
+	
 	public String toString() {
         return "Student\nID: "+iD+"\nJméno: "+jmeno+"\nPříjmení: "+prijmeni+"\nDatum narození: "+datumNarozeni+"\nStudijní průměr: "+prumer();
     }

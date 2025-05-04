@@ -39,7 +39,7 @@ public abstract class Student {
 	}
 	
 	public String toString() {
-        return "Student\nID: "+iD+"\nJméno: "+jmeno+"\nPříjmení: "+prijmeni+"\nDatum narození: "+datumNarozeni+"\nStudijní průměr: "+prumer();
+        return "Student\nID: "+iD+"\nJméno: "+jmeno+"\nPříjmení: "+prijmeni+"\nDatum narození: "+datumNarozeni+"\nStudijní průměr: "+String.format("%.2f", prumer());
     }
 
 

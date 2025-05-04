@@ -1,7 +1,6 @@
 package Projekt;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -28,6 +27,9 @@ public class Databaze {
 	}
 	
 	public void pridejStudenta(int obor, String jmeno, String prijmeni, String datumNarozeni){
+		while(najdiPodleID(dalsiID)!=null) {
+			dalsiID++;
+		}
 		if(obor==1) {
 			studentiKyber.add(new Kyberbezpečnost(dalsiID, jmeno, prijmeni, datumNarozeni));
 			dalsiID++;
@@ -206,6 +208,7 @@ public class Databaze {
 			}
 			else {
 				System.out.println("\nV souboru není platný obor studenta.");
+				br.close();
 				return;
 			}
 			
@@ -234,5 +237,26 @@ public class Databaze {
 		} catch (IOException e) {
 			System.out.println("\nVe čtení nastala chyba.");
 		}
+	}
+	
+	public void pridejStudentaZSQL(int obor, int id, String jmeno, String prijmeni, String datumNarozeni){
+		if(obor==1) {
+			studentiKyber.add(new Kyberbezpečnost(id, jmeno, prijmeni, datumNarozeni));
+		}
+		else if(obor==2) {
+			studentiTele.add(new Telekomunikace(id, jmeno, prijmeni, datumNarozeni));
+		}
+		else {
+			System.out.println("\nNeplatný výběr.");
+		}
+	}
+	
+	public List<Student> ukladaniDoSQL() {
+		List<Student> listProUkladani = new ArrayList<>();
+
+	    for (List<? extends Student> obor : seznamStudentu) {
+	    	listProUkladani.addAll(obor);
+	    }
+	    return listProUkladani;
 	}
 }

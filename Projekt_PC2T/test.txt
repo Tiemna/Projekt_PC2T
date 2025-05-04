@@ -1,6 +1,6 @@
 class Projekt.Telekomunikace
 4
-Eva
-Svobodova
-1.2.2002
-[5]
+Anna
+Malikova
+5.5.2001
+[5, 4, 1]

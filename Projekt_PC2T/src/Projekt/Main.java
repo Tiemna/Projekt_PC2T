@@ -6,27 +6,10 @@ public class Main {
 
 	public static void main(String[] args) {
 		Databaze db = new Databaze();
+		Inicializace.vytvorTabulky();
+		Inicializace.nactiVsechnyStudentyZSQL(db);	    
+	    
 		
-		db.pridejStudenta(1, "Jan", "Novak", "3.4.2001");
-	    db.pridejStudenta(1, "Eva", "Svobodova", "1.2.2002");
-	    db.pridejStudenta(1, "Eva", "Svobodova", "1.2.2002");
-	    db.pridejStudenta(2, "Eva", "Svobodova", "1.2.2002");
-	    db.zadejZnamku(1,2);
-	    db.zadejZnamku(1,5);
-	    db.zadejZnamku(2,3);
-	    db.zadejZnamku(3,2);
-	    db.zadejZnamku(3,1);
-	    db.zadejZnamku(4,5);
-	    db.vypisObecnehoPrumeru();
-	    
-	    db.vypisPoctuStudentu();
-	    db.odstranitStudenta(2);
-	    db.vypisAbecedneVsichni();
-	    db.vypisPoctuStudentu();
-	    
-	    db.provedDovednost(4);
-	    db.provedDovednost(1);
-	    
 	    int volba;
 	    boolean run=true;
 	    Scanner sc=new Scanner(System.in);
@@ -38,8 +21,10 @@ public class Main {
 			System.out.println("4. Zapsat známku studenta");
 			System.out.println("5. Vypsání informací o studentech");
 			System.out.println("6. Vypsání obecných průměrů");
-			System.out.println("7. Ulož studenta do txt");
-			System.out.println("8. Načíst studenta z txt");
+			System.out.println("7. Výpis počtu studentů");
+			System.out.println("8. Ulož studenta do txt");
+			System.out.println("9. Načíst studenta z txt");
+			System.out.println("10. Ukončení programu a uložení do SQL");
 			volba=sc.nextInt();
 			
 			switch(volba) {
@@ -108,6 +93,10 @@ public class Main {
 					break;
 					
 				case 7:
+					db.vypisPoctuStudentu();
+					break;
+					
+				case 8:
 					System.out.println("Zadejte název souboru bez koncovky: ");
 					String filename=sc.next();
 					System.out.println("Zadejte id studenta: ");
@@ -115,17 +104,26 @@ public class Main {
 					db.ulozStudenta(filename, volba);
 					break;
 					
-				case 8:
+				case 9:
 					System.out.println("Zadejte název souboru i s koncovkou: ");
 					db.nactiStudenta(sc.next());
 					break;
+					
+				case 10:
+					System.out.println("Ukončuji program");
+					Ukonceni.vymazDatabazi();
+					Ukonceni.ulozVsechnyStudenty(db);
+					run=false;
+					break;
 	
 				default:
-					System.out.println("Neplatná hodnota – zadej číslo od 1 do 8.");
+					System.out.println("Neplatná hodnota – zadej číslo od 1 do 10.");
 			}
 			
 			
 		}
+		sc.close();
+		DBconnect.disconnect();
 
 	}
 
